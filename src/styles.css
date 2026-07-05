@@ -1,0 +1,1143 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* --- Ocean Breeze -------------------------------------------------- *
+ * A calm, oceanic field: cool blue-white in light, deep navy in dark,
+ * with a single emerald-green accent used sparingly (the brand blob,
+ * links, hover states, the active tag, the caret). Display and body are
+ * DM Sans; labels, meta, and HUD readouts are IBM Plex Mono; long-form
+ * serif is Lora. Imagery is masked into soft squircle tiles. Light =
+ * alice-blue field, dark = navy field, and a section can flip to the
+ * opposite tone with .section-ink. Palette from tweakcn "Ocean Breeze". */
+
+:root {
+  --background: oklch(0.97 0 0);
+  --foreground: oklch(0.22 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0 0);
+  --primary: oklch(0.22 0 0);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.94 0 0);
+  --secondary-foreground: oklch(0.3 0 0);
+  --muted: oklch(0.955 0 0);
+  --muted-foreground: oklch(0.46 0 0);
+  /* Monochrome: the lone "accent" is just full ink (near-black), so
+     links, hover, the active tag, and the caret read as contrast, not
+     hue. The whole field is neutral grayscale — black on near-white. */
+  --accent: oklch(0.22 0 0);
+  --accent-foreground: oklch(0.99 0 0);
+  --redline: oklch(0.22 0 0);
+  --destructive: oklch(0.6368 0.2078 25.3313);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.89 0 0);
+  --input: oklch(0.89 0 0);
+  --ring: oklch(0.22 0 0);
+
+  /* A section flipped to the opposite tone (near-black island in a light page). */
+  --section-ink-bg: oklch(0.2 0 0);
+  --section-ink-fg: oklch(0.93 0 0);
+  --section-ink-muted: oklch(0.6 0 0);
+  --section-ink-border: color-mix(in srgb, oklch(0.93 0 0) 16%, transparent);
+
+  --code-bg: oklch(0.955 0 0);
+  --adm-note: oklch(0.22 0 0);
+  --adm-info: oklch(0.46 0 0);
+  --adm-tip: oklch(0.6 0.12 182);
+  --adm-warning: oklch(0.64 0.13 70);
+  --adm-danger: oklch(0.6368 0.2078 25.3313);
+
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", sans-serif;
+  --font-display: "DM Sans", ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", sans-serif;
+  --font-serif: "Lora", ui-serif, Georgia, Cambria, "Times New Roman", serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --radius: 0.5rem;
+  --radius-tile: 1.4rem;
+  --tracking-normal: 0em;
+}
+
+.dark {
+  --background: oklch(0.17 0 0);
+  --foreground: oklch(0.92 0 0);
+  --card: oklch(0.22 0 0);
+  --card-foreground: oklch(0.92 0 0);
+  --popover: oklch(0.22 0 0);
+  --popover-foreground: oklch(0.92 0 0);
+  --primary: oklch(0.92 0 0);
+  --primary-foreground: oklch(0.17 0 0);
+  --secondary: oklch(0.27 0 0);
+  --secondary-foreground: oklch(0.8 0 0);
+  --muted: oklch(0.24 0 0);
+  --muted-foreground: oklch(0.62 0 0);
+  --accent: oklch(0.92 0 0);
+  --accent-foreground: oklch(0.17 0 0);
+  --redline: oklch(0.92 0 0);
+  --destructive: oklch(0.7040 0.1900 25.3313);
+  --destructive-foreground: oklch(0.17 0 0);
+  --border: oklch(0.3 0 0);
+  --input: oklch(0.3 0 0);
+  --ring: oklch(0.92 0 0);
+
+  /* In the near-black field, the flipped island is the light tone. */
+  --section-ink-bg: oklch(0.95 0 0);
+  --section-ink-fg: oklch(0.22 0 0);
+  --section-ink-muted: oklch(0.46 0 0);
+  --section-ink-border: color-mix(in srgb, oklch(0.22 0 0) 16%, transparent);
+
+  --code-bg: oklch(0.24 0 0);
+  --adm-note: oklch(0.92 0 0);
+  --adm-info: oklch(0.7 0 0);
+  --adm-tip: oklch(0.7845 0.1325 181.912);
+  --adm-warning: oklch(0.82 0.13 80);
+  --adm-danger: oklch(0.704 0.19 25.3313);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-redline: var(--redline);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+  --font-serif: var(--font-serif);
+  --font-mono: var(--font-mono);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  *,
+  ::before,
+  ::after {
+    border-color: var(--color-border);
+  }
+  :focus-visible {
+    outline: 1.5px solid var(--ring);
+    outline-offset: 3px;
+  }
+  ::selection {
+    background-color: color-mix(in srgb, var(--accent) 30%, transparent);
+  }
+  html,
+  body {
+    overscroll-behavior: none;
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    letter-spacing: var(--tracking-normal);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+/* --- The field: a film-grain backdrop with drifting light ----------- *
+ * A monochrome field that quietly breathes: soft light slowly drifts
+ * underneath for depth, under a fine layer of film grain that boils a
+ * few frames a second — the texture of a black-and-white print, echoing
+ * the portrait. The grain is a baked turbulence tile (soft-light blended
+ * so it works on either tone) nudged one tile per loop, so it reseeds
+ * without sliding. Transform/opacity only; freezes flat on reduced-motion. */
+@layer components {
+  .page-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+    overflow: hidden;
+    pointer-events: none;
+    background-color: var(--background);
+    opacity: 0;
+    animation: field-in 1.1s ease-out forwards;
+  }
+
+  /* Soft monochrome light, drifting and breathing for depth. */
+  .page-bg::before {
+    content: "";
+    position: absolute;
+    inset: -25%;
+    background:
+      radial-gradient(42% 50% at 22% 26%, color-mix(in srgb, var(--foreground) 12%, transparent), transparent 70%),
+      radial-gradient(40% 46% at 80% 70%, color-mix(in srgb, var(--foreground) 10%, transparent), transparent 72%),
+      radial-gradient(55% 50% at 50% 118%, color-mix(in srgb, var(--foreground) 8%, transparent), transparent 66%);
+    animation: aurora-drift 32s ease-in-out infinite alternate;
+  }
+
+  /* Film grain: ink-colored speckle (turbulence used as a mask) so it
+     shows on either tone — black specks on the light field, white on the
+     dark — instead of a blend mode that vanishes at the extremes. */
+  .page-bg::after {
+    content: "";
+    position: absolute;
+    inset: -260px;
+    background-color: var(--foreground);
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='200'%20height='200'%3E%3Cfilter%20id='g'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.72'%20numOctaves='3'%20stitchTiles='stitch'/%3E%3CfeColorMatrix%20type='matrix'%20values='0%200%200%200%200%200%200%200%200%200%200%200%200%200%200%201%200%200%200%200'/%3E%3C/filter%3E%3Crect%20width='100%25'%20height='100%25'%20filter='url(%23g)'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='200'%20height='200'%3E%3Cfilter%20id='g'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.72'%20numOctaves='3'%20stitchTiles='stitch'/%3E%3CfeColorMatrix%20type='matrix'%20values='0%200%200%200%200%200%200%200%200%200%200%200%200%200%200%201%200%200%200%200'/%3E%3C/filter%3E%3Crect%20width='100%25'%20height='100%25'%20filter='url(%23g)'/%3E%3C/svg%3E");
+    -webkit-mask-size: 200px 200px;
+    mask-size: 200px 200px;
+    opacity: 0.18;
+    animation: grain-boil 1.8s steps(6) infinite;
+  }
+
+  @keyframes field-in {
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes aurora-drift {
+    0% {
+      transform: translate3d(-2.5%, -1.5%, 0) scale(1);
+    }
+    100% {
+      transform: translate3d(2.5%, 2%, 0) scale(1.08);
+    }
+  }
+  /* Exactly one tile of stepped travel → reseeds each frame, loops clean. */
+  @keyframes grain-boil {
+    to {
+      transform: translate3d(-200px, -200px, 0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .page-bg::before,
+    .page-bg::after {
+      animation: none;
+    }
+  }
+}
+
+/* --- A section flipped to the opposite tone ------------------------- */
+@layer components {
+  .section-ink {
+    background-color: var(--section-ink-bg);
+    color: var(--section-ink-fg);
+    --foreground: var(--section-ink-fg);
+    --muted-foreground: var(--section-ink-muted);
+    --border: var(--section-ink-border);
+    --card: color-mix(in srgb, var(--section-ink-fg) 5%, var(--section-ink-bg));
+  }
+}
+
+/* --- Header: translucent field bar ---------------------------------- */
+@layer components {
+  .site-header {
+    background-color: color-mix(in srgb, var(--background) 80%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  /* Home: a truly transparent bar floating over the animated field —
+     no tint, no frosted blur (the blur over the textured field read as a
+     solid bar), no border. The nav just floats on the backdrop. */
+  .site-header-home {
+    background-color: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: 0;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+  }
+  /* Header logo: the JB monogram, masked so it inherits the brand link's
+     color (foreground, → accent on hover) and flips with the theme. */
+  .brand-mark {
+    display: inline-block;
+    width: 1.7rem;
+    height: 1.7rem;
+    flex: none;
+    background-color: currentColor;
+    -webkit-mask: url("/images/jb-mark.png") center / contain no-repeat;
+    mask: url("/images/jb-mark.png") center / contain no-repeat;
+  }
+}
+
+/* --- Motion: a quiet settle on load --------------------------------- */
+@layer utilities {
+  .draft {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: draft-in 0.6s cubic-bezier(0.22, 0.7, 0.3, 1) forwards;
+    animation-delay: var(--draft-delay, 0ms);
+  }
+  @keyframes draft-in {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .draw {
+    transform: scaleX(0);
+    transform-origin: left center;
+    animation: draw-in 0.75s cubic-bezier(0.65, 0, 0.25, 1) forwards;
+    animation-delay: var(--draft-delay, 0ms);
+  }
+  @keyframes draw-in {
+    to {
+      transform: scaleX(1);
+    }
+  }
+  /* The typing caret: a thin flame bar. */
+  .typing-caret {
+    display: inline-block;
+    width: 2px;
+    height: 1.1em;
+    margin-left: 0.18em;
+    vertical-align: -0.16em;
+    background-color: var(--accent);
+    animation: caret-blink 1.1s steps(1) infinite;
+  }
+  @keyframes caret-blink {
+    0%,
+    49% {
+      opacity: 1;
+    }
+    50%,
+    100% {
+      opacity: 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .draft,
+    .draw,
+    .page-bg {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+    .typing-caret {
+      animation: none;
+    }
+  }
+}
+
+/* --- Home entrance: "Shutter Split" --------------------------------- *
+ * The name is the hero moment. Each line ("Alexander", "West") is two
+ * complementary, clipped copies of itself: a TOP band that slides in
+ * from the left edge and a BOTTOM band that slides in from the right.
+ * They lock on the horizontal centerline with a touch of mechanical
+ * overshoot, an accent hairline snaps across the seam, then the rest of
+ * the hero resolves with a crisp upward stagger. Resting state is the
+ * plain, correctly-spaced name — the two bands tile back into one word
+ * with no gap and no doubled glyphs. Scoped to brand-new classes so the
+ * blog's .draft / .draw motion is untouched.                            */
+@layer utilities {
+  .enter-name {
+    position: relative;
+  }
+
+  /* One name line: a shrink-to-text block so the band travel and the
+     seam hairline are sized to the word, not the column. */
+  .enter-split {
+    position: relative;
+    display: block;
+    width: max-content;
+    max-width: 100%;
+  }
+
+  .enter-split__half {
+    display: block;
+    white-space: nowrap;
+    opacity: 0;
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+  /* Top band establishes the line height and enters from the left. */
+  .enter-split__half--top {
+    position: relative;
+    clip-path: inset(0 0 calc(50% - 1px) 0);
+    transform: translateX(-115%);
+    animation: shutter-from-left 0.72s cubic-bezier(0.18, 0.86, 0.32, 1.06) forwards;
+    animation-delay: var(--split-delay, 0ms);
+  }
+  /* Bottom band overlays the top exactly and enters from the right. The
+     2px overlap at the seam guarantees no sub-pixel hairline gap. */
+  .enter-split__half--bottom {
+    position: absolute;
+    inset: 0;
+    clip-path: inset(calc(50% - 1px) 0 0 0);
+    transform: translateX(115%);
+    animation: shutter-from-right 0.72s cubic-bezier(0.18, 0.86, 0.32, 1.06) forwards;
+    animation-delay: var(--split-delay, 0ms);
+  }
+  @keyframes shutter-from-left {
+    0% {
+      transform: translateX(-115%);
+      opacity: 0;
+    }
+    14% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  @keyframes shutter-from-right {
+    0% {
+      transform: translateX(115%);
+      opacity: 0;
+    }
+    14% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  /* The accent seam: a hairline that draws across the centerline at the
+     moment of the lock, then fades — leaving the resting name unmarked. */
+  .enter-split::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: calc(50% - 1px);
+    width: 100%;
+    height: 2px;
+    background-color: var(--accent);
+    transform: scaleX(0);
+    transform-origin: center;
+    opacity: 0;
+    pointer-events: none;
+    animation: shutter-seam 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+    animation-delay: calc(var(--split-delay, 0ms) + 250ms);
+  }
+  @keyframes shutter-seam {
+    0% {
+      transform: scaleX(0);
+      opacity: 0;
+    }
+    35% {
+      opacity: 1;
+    }
+    60% {
+      transform: scaleX(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scaleX(1);
+      opacity: 0;
+    }
+  }
+
+  /* Secondary stagger: eyebrow, statement, typing, socials, portrait
+     resolve with a crisp upward slide once the name has locked. */
+  .enter-rise {
+    opacity: 0;
+    transform: translateY(18px);
+    animation: enter-rise 0.66s cubic-bezier(0.2, 0.72, 0.28, 1.04) forwards;
+    animation-delay: var(--enter-delay, 0ms);
+  }
+  @keyframes enter-rise {
+    0% {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Render rings: two concentric ink ripples that bloom from centre as
+     the name locks, then fade to nothing — ported from the aperture
+     entrance. Ambient only: they sit behind the content (z-0; the hero
+     column is lifted to z-10) and leave a clean resting state. */
+  .enter-stage::before,
+  .enter-stage::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 96vmin;
+    height: 96vmin;
+    margin: -48vmin 0 0 -48vmin;
+    border-radius: 50%;
+    border: 1px solid color-mix(in srgb, var(--foreground) 28%, transparent);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0;
+    transform: scale(0.04);
+    will-change: opacity, transform;
+    animation: enter-ring 1.15s cubic-bezier(0.22, 0.7, 0.3, 1) forwards;
+    animation-delay: 120ms;
+  }
+  .enter-stage::after {
+    width: 64vmin;
+    height: 64vmin;
+    margin: -32vmin 0 0 -32vmin;
+    border-color: color-mix(in srgb, var(--foreground) 18%, transparent);
+    animation-delay: 210ms;
+  }
+  @keyframes enter-ring {
+    0% {
+      opacity: 0;
+      transform: scale(0.04);
+    }
+    18% {
+      opacity: 0.8;
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1);
+    }
+  }
+
+  /* Header: the home bar drops in from above and fades, settling in last
+     with the late secondary-stagger content (statement, typing, socials).
+     Home only — scoped to .enter-header on the home header. */
+  .enter-header {
+    opacity: 0;
+    transform: translateY(-100%);
+    will-change: opacity, transform;
+    animation: enter-header 0.7s cubic-bezier(0.2, 0.72, 0.28, 1.04) forwards;
+    animation-delay: 1200ms;
+  }
+  @keyframes enter-header {
+    0% {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .enter-rise,
+    .enter-split__half,
+    .enter-header {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+    .enter-split::after {
+      animation: none;
+      opacity: 0;
+    }
+    .enter-stage::before,
+    .enter-stage::after {
+      content: none;
+      animation: none;
+    }
+  }
+}
+
+/* --- Theme toggle: circular wipe via the View Transitions API -------- *
+ * The toggle reveals the new theme with a circle expanding from the
+ * button (driven in scripts/theme.js). Kill the default cross-fade so the
+ * clip-path reveal reads cleanly; old stays underneath while the new is
+ * wiped in on top. Unsupported browsers / reduced-motion switch instantly.
+ * Top-level (not in a layer) so layered rules can't override it.          */
+::view-transition-image-pair(root) {
+  isolation: auto;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-new(root) {
+  z-index: 1;
+}
+::view-transition-old(root) {
+  z-index: 0;
+}
+
+/* --- Two-tone statement --------------------------------------------- *
+ * The signature Taste reveal: an emphasis clause in full ink, the
+ * trailing context in muted grey.                                        */
+@layer components {
+  .statement {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.18;
+    color: var(--foreground);
+    text-wrap: balance;
+  }
+  .statement .ctx {
+    color: var(--muted-foreground);
+  }
+}
+
+/* --- Bracket pill button -------------------------------------------- *
+ * ( • LABEL ) — parenthesis arcs that spread on hover, a mono label,
+ * and a small datum dot. Ghost by default.                               */
+@layer components {
+  .btn-bracket {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0 0.2rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--foreground);
+    transition: color 160ms ease;
+  }
+  .btn-bracket::before,
+  .btn-bracket::after {
+    content: "";
+    width: 7px;
+    height: 1.85em;
+    flex: none;
+    border: 1px solid currentColor;
+    opacity: 0.45;
+    transition:
+      opacity 160ms ease,
+      transform 200ms cubic-bezier(0.34, 1.4, 0.5, 1);
+  }
+  .btn-bracket::before {
+    border-right: 0;
+    border-radius: 9px 0 0 9px;
+  }
+  .btn-bracket::after {
+    border-left: 0;
+    border-radius: 0 9px 9px 0;
+  }
+  .btn-bracket .dot {
+    width: 5px;
+    height: 5px;
+    flex: none;
+    border-radius: 50%;
+    background-color: var(--accent);
+  }
+  .btn-bracket:hover {
+    color: var(--accent);
+  }
+  .btn-bracket:hover::before,
+  .btn-bracket:focus-visible::before {
+    opacity: 1;
+    transform: translateX(-3px);
+  }
+  .btn-bracket:hover::after,
+  .btn-bracket:focus-visible::after {
+    opacity: 1;
+    transform: translateX(3px);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .btn-bracket::before,
+    .btn-bracket::after {
+      transition: opacity 160ms ease;
+    }
+    .btn-bracket:hover::before,
+    .btn-bracket:focus-visible::before,
+    .btn-bracket:hover::after,
+    .btn-bracket:focus-visible::after {
+      transform: none;
+    }
+  }
+}
+
+/* --- Icon squares (header + hero social) ---------------------------- */
+@layer components {
+  .icon-square {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    color: var(--foreground);
+    transition:
+      color 160ms ease,
+      border-color 160ms ease,
+      transform 200ms ease;
+  }
+  .icon-square:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .icon-square:hover {
+      transform: none;
+    }
+  }
+}
+
+/* --- Nav links ------------------------------------------------------ */
+@layer components {
+  .nav-link {
+    position: relative;
+    padding-bottom: 3px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--foreground);
+    transition: color 150ms ease;
+  }
+  .nav-link:hover {
+    color: var(--accent);
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 1px;
+    background-color: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 200ms cubic-bezier(0.65, 0, 0.25, 1);
+  }
+  .nav-link:hover::after,
+  .nav-link[aria-current="page"]::after {
+    transform: scaleX(1);
+  }
+  .nav-link[aria-current="page"] {
+    color: var(--accent);
+  }
+
+  .title-underline {
+    position: relative;
+    display: inline-block;
+  }
+  .title-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 1px;
+    background-color: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 200ms cubic-bezier(0.65, 0, 0.25, 1);
+  }
+  a:hover .title-underline::after,
+  .title-underline:hover::after {
+    transform: scaleX(1);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .nav-link::after,
+    .title-underline::after {
+      transition: none;
+    }
+  }
+}
+
+/* --- Tag filter chips ----------------------------------------------- */
+@layer components {
+  .tag-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+    cursor: pointer;
+    transition:
+      color 150ms ease,
+      background-color 150ms ease,
+      border-color 150ms ease;
+  }
+  .tag-button:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  .tag-button.active {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-foreground);
+  }
+}
+
+/* --- Blog work cards ------------------------------------------------ */
+@layer components {
+  .work-card {
+    position: relative;
+    border-radius: var(--radius-tile);
+    overflow: hidden;
+    transition:
+      border-color 180ms ease,
+      transform 220ms cubic-bezier(0.22, 0.7, 0.3, 1);
+  }
+  .work-card:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--accent) 60%, var(--border));
+  }
+  .work-thumb {
+    overflow: hidden;
+    background-color: var(--muted);
+  }
+  .work-thumb img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 400ms cubic-bezier(0.22, 0.7, 0.3, 1);
+  }
+  .work-card:hover .work-thumb img {
+    transform: scale(1.04);
+  }
+  /* The "Read" affordance: a mono label whose underline sweeps in. */
+  .read-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+    transition: color 160ms ease;
+  }
+  .work-card:hover .read-link {
+    color: var(--accent);
+  }
+  .read-link .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: currentColor;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .work-card:hover {
+      transform: none;
+    }
+    .work-card:hover .work-thumb img {
+      transform: none;
+    }
+  }
+}
+
+/* --- Title block on post pages (editorial header data row) ---------- */
+@layer components {
+  .title-block {
+    background-color: var(--card);
+    border-radius: var(--radius-tile);
+    overflow: hidden;
+  }
+  .tb-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    background-color: var(--border);
+    border-top: 1px solid var(--border);
+  }
+  @media (min-width: 640px) {
+    .tb-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  .tb-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    min-width: 0;
+    padding: 0.6rem 0.95rem 0.7rem;
+    background-color: var(--card);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    line-height: 1.35;
+    color: var(--foreground);
+  }
+  .tb-label {
+    font-size: 0.56rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+  }
+}
+
+/* --- Post rendering: code details, admonitions, anchors -------------- *
+ * Shiki emits per-token --shiki-light / --shiki-dark variables
+ * (defaultColor:false); light is default, html.dark flips to the dark
+ * vars, so highlighting follows the toggle with zero client JS.          */
+@layer components {
+  .code-block {
+    position: relative;
+    margin: 1.75rem 0;
+    border: 1px solid var(--border);
+    border-radius: 0.9rem;
+    overflow: hidden;
+    background-color: var(--code-bg);
+  }
+  .code-block::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 1.9rem;
+    border-bottom: 1px solid var(--border);
+    background-color: color-mix(in srgb, var(--foreground) 3%, transparent);
+    pointer-events: none;
+  }
+  .code-block::before {
+    content: attr(data-lang);
+    position: absolute;
+    z-index: 1;
+    top: 0.6rem;
+    left: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+    pointer-events: none;
+  }
+
+  .copy-code {
+    position: absolute;
+    z-index: 1;
+    top: 0.3rem;
+    right: 0.35rem;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.22rem 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background-color: var(--code-bg);
+    color: var(--muted-foreground);
+    cursor: pointer;
+    opacity: 0;
+    transition:
+      opacity 150ms ease,
+      color 150ms ease,
+      border-color 150ms ease;
+  }
+  .code-block:hover .copy-code,
+  .copy-code:focus-visible {
+    opacity: 1;
+  }
+  .copy-code:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  .copy-code.copied {
+    color: var(--accent-foreground);
+    border-color: var(--accent);
+    background-color: var(--accent);
+  }
+
+  .heading-anchor {
+    margin-left: 0.45em;
+    font-family: var(--font-mono);
+    font-weight: 400;
+    color: var(--muted-foreground);
+    text-decoration: none;
+    opacity: 0;
+    transition:
+      opacity 150ms ease,
+      color 150ms ease;
+  }
+  .prose :is(h2, h3):hover .heading-anchor,
+  .heading-anchor:focus-visible {
+    opacity: 0.55;
+  }
+  .heading-anchor:hover {
+    opacity: 1;
+    color: var(--accent);
+  }
+
+  .admonition {
+    margin: 1.5rem 0;
+    padding: 0.85rem 1.1rem;
+    border: 1px solid var(--border);
+    border-left: 2px solid var(--adm-color, var(--accent));
+    border-radius: 0.7rem;
+    background-color: color-mix(in srgb, var(--adm-color, var(--accent)) 6%, transparent);
+  }
+  .admonition-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin: 0 0 0.4rem 0;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--adm-color, var(--accent));
+  }
+  .admonition-title::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    flex: none;
+    border-radius: 50%;
+    background-color: currentColor;
+  }
+  .admonition-content {
+    font-size: 0.95rem;
+  }
+  .admonition-content > :first-child {
+    margin-top: 0;
+  }
+  .admonition-content > :last-child {
+    margin-bottom: 0;
+  }
+  .admonition-note {
+    --adm-color: var(--adm-note);
+  }
+  .admonition-info {
+    --adm-color: var(--adm-info);
+  }
+  .admonition-tip {
+    --adm-color: var(--adm-tip);
+  }
+  .admonition-warning {
+    --adm-color: var(--adm-warning);
+  }
+  .admonition-danger {
+    --adm-color: var(--adm-danger);
+  }
+}
+
+/* --- Prose token wiring (must stay OUTSIDE any @layer) --------------- *
+ * The Typography plugin emits its .prose defaults into @layer
+ * utilities, which outranks @layer components regardless of selector
+ * specificity. Un-layered author rules outrank every layer, so these
+ * live at the top level.                                                 */
+.prose {
+  --tw-prose-body: var(--foreground);
+  --tw-prose-headings: var(--foreground);
+  --tw-prose-lead: var(--muted-foreground);
+  --tw-prose-links: var(--foreground);
+  --tw-prose-bold: var(--foreground);
+  --tw-prose-counters: var(--muted-foreground);
+  --tw-prose-bullets: var(--accent);
+  --tw-prose-hr: var(--border);
+  --tw-prose-quotes: var(--foreground);
+  --tw-prose-quote-borders: var(--accent);
+  --tw-prose-captions: var(--muted-foreground);
+  --tw-prose-code: var(--foreground);
+  --tw-prose-th-borders: var(--border);
+  --tw-prose-td-borders: var(--border);
+  font-family: var(--font-sans);
+  counter-reset: section;
+}
+.prose :is(h1, h2, h3, h4) {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+/* Section headings carry an index number, a quiet HUD marker. */
+.prose h2 {
+  counter-increment: section;
+}
+.prose h2::before {
+  content: counter(section, decimal-leading-zero);
+  margin-right: 0.8em;
+  font-family: var(--font-mono);
+  font-size: 0.56em;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  vertical-align: 0.36em;
+}
+.prose ul {
+  list-style-type: square;
+}
+.prose a {
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: text-decoration-thickness 150ms ease;
+}
+.prose a:hover {
+  text-decoration-thickness: 2.5px;
+}
+.prose blockquote {
+  font-style: normal;
+  color: var(--muted-foreground);
+}
+
+/* Token + surface colors from Shiki's dual-theme variables. */
+.prose pre.shiki,
+.prose pre.shiki span {
+  color: var(--shiki-light);
+}
+html.dark .prose pre.shiki,
+html.dark .prose pre.shiki span {
+  color: var(--shiki-dark);
+}
+.prose pre.shiki {
+  margin: 0;
+  padding: 2.6rem 1.15rem 1.05rem;
+  border: 0;
+  border-radius: 0;
+  --tw-prose-pre-bg: transparent;
+  background-color: transparent;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+.prose pre.shiki code {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 400;
+  background: none;
+  padding: 0;
+  border: 0;
+  color: inherit;
+}
+.prose pre.shiki code::before,
+.prose pre.shiki code::after {
+  content: none;
+}
+
+/* Inline code: a small labeled part. */
+.prose :not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  font-weight: 500;
+  background-color: color-mix(in srgb, var(--foreground) 5%, transparent);
+  color: var(--foreground);
+  padding: 0.12em 0.38em;
+  border: 1px solid var(--border);
+  border-radius: 0.3rem;
+}
+.prose :not(pre) > code::before,
+.prose :not(pre) > code::after {
+  content: none;
+}

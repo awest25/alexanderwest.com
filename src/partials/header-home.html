@@ -1,0 +1,32 @@
+<header class="enter-header site-header site-header-home fixed top-0 z-50 w-full">
+  <div class="mx-auto flex h-16 w-full max-w-5xl items-center justify-between gap-3 px-7 sm:px-8 lg:px-12">
+    <a href="/" class="brand text-foreground transition-colors duration-150 hover:text-accent" aria-label="Home">
+      <span class="brand-mark" aria-hidden="true"></span>
+    </a>
+    <nav class="flex shrink-0 items-center gap-4 sm:gap-7">
+      <a href="/blog" class="nav-link" data-scramble>Blog</a>
+      <a href="/Resume.pdf" target="_blank" rel="noopener noreferrer" class="nav-link" data-scramble>Resume</a>
+      <button
+        type="button"
+        id="theme-toggle"
+        aria-label="Toggle theme"
+        class="icon-square h-9 w-9 text-muted-foreground"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden dark:block" aria-hidden="true">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2" />
+          <path d="M12 20v2" />
+          <path d="m4.93 4.93 1.41 1.41" />
+          <path d="m17.66 17.66 1.41 1.41" />
+          <path d="M2 12h2" />
+          <path d="M20 12h2" />
+          <path d="m6.34 17.66-1.41 1.41" />
+          <path d="m19.07 4.93-1.41 1.41" />
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="block dark:hidden" aria-hidden="true">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+        </svg>
+      </button>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,35 @@
+---
+title: Blog
+ogTitle: Blog | Alexander West
+description: Notes on software engineering, system design, and building things that work.
+ogType: website
+ogImage: /icon-512.png
+canonical: https://alexanderwest.com/blog
+header: blog
+htmlClass: ""
+bodyClass: "min-h-screen"
+pageScripts: |
+  <script src="/scripts/blog-filter.js" defer></script>
+---
+<section class="px-7 pb-24 pt-24 sm:px-8 sm:pt-28 lg:px-12">
+  <div class="mx-auto w-full max-w-3xl">
+    <p class="draft flex items-center gap-2.5 font-mono text-[11px] font-semibold uppercase tracking-[0.28em] text-muted-foreground" style="--draft-delay: 40ms;">
+      Writing
+    </p>
+
+    <h1 class="draft mt-5 font-display text-5xl font-bold leading-[0.95] tracking-[-0.03em] text-foreground sm:text-6xl" style="--draft-delay: 100ms;">Notes and essays</h1>
+
+    <p class="statement draft mt-6 max-w-2xl text-xl sm:text-2xl" style="--draft-delay: 160ms;">
+      Opinions on building software <span class="ctx">from technical architecture and programming to career advice and the occasional personal musing.</span>
+    </p>
+
+    <div id="tag-filter" class="draft mt-10 flex flex-wrap gap-2" style="--draft-delay: 240ms;">
+      {{ tagFilter }}
+    </div>
+
+    <div id="posts-grid" class="draft mt-8 flex flex-col gap-5" style="--draft-delay: 320ms;">
+      {{ postCards }}
+    </div>
+    <p id="no-posts" class="hidden rounded-2xl border border-border py-12 text-center font-mono text-sm uppercase tracking-[0.18em] text-muted-foreground">No posts found matching your criteria.</p>
+  </div>
+</section>

@@ -1,0 +1,11 @@
+# Portfolio runs as its own compose unit on the acquisition VM, mirroring the
+# blog. Built on the VM from this directory; served on :3002 and proxied by
+# NPM at alexanderwest.com. Fully static — no env file, no secrets.
+services:
+  portfolio:
+    build: .
+    image: farallon-portfolio:latest
+    container_name: portfolio
+    ports:
+      - "3002:3002"
+    restart: unless-stopped
