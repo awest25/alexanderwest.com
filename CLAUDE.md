@@ -51,11 +51,9 @@ Authoring features the renderer supports today:
 
 Pages: `src/pages/*.html`. Plain HTML with `{{ placeholders }}` for values the layout fills (title, description, content). The page itself can also have placeholders that the build script fills before wrapping (used for blog/index.html's tag filter + post cards).
 
-## Adding a blog post
+## Blog
 
-1. `src/posts/<slug>.md` with frontmatter: `title`, `summary`, `label`, `author`, `published`, `image`, `readTime`, optional `tags`.
-2. Cover image in `public/images/`.
-3. `npm run build` → post HTML at `dist/blog/posts/<slug>.html`, card on the blog index, entry in `sitemap.xml`.
+The blog is NOT this repo: it lives at `blog.alexanderwest.com` (the [blog](https://github.com/awest25/blog) repo — Astro + Keystatic, reskinned to this design). Publish there via /keystatic or by committing `.mdoc` files. This repo's static blog machinery (src/posts/, buildBlogIndex, post partials) is dormant: buildBlogIndex only runs if src/pages/blog/index.html exists. The header Blog link points at the subdomain.
 
 ## Adding a page
 

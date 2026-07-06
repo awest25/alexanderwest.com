@@ -7,7 +7,7 @@ Design and build system adapted from [JayceBordelon/jaycebordelon.com](https://g
 ## Related repos
 
 - [farallon-infra](https://github.com/awest25/farallon-infra) — Terraform for the homelab this site runs on.
-- [blog](https://github.com/awest25/blog) — earlier Astro blog at `blog.alexanderwest.com`.
+- [blog](https://github.com/awest25/blog) — THE blog, at `blog.alexanderwest.com`: Astro + Keystatic (browser/phone editing at /keystatic), reskinned to this site's design. This repo's internal /blog is retired; the header links to the subdomain.
 - [resume](https://github.com/awest25/resume) — LaTeX source for `public/Resume.pdf` (built by that repo's CI).
 
 ## What's here

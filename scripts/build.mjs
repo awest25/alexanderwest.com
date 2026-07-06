@@ -469,7 +469,7 @@ function copyAssets() {
 }
 
 function writeSitemap(posts) {
-  const urls = ["/", "/blog", ...posts.map((p) => `/blog/posts/${p.id}`)];
+  const urls = ["/", ...posts.map((p) => `/blog/posts/${p.id}`)];
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map((u) => `  <url><loc>${SITE_URL}${u}</loc></url>`).join("\n")}
@@ -505,7 +505,9 @@ async function main() {
 
   buildPages();
   const posts = buildPosts();
-  buildBlogIndex(posts);
+  // The blog lives at blog.alexanderwest.com (Astro + Keystatic, same design);
+  // only build the internal index if the page exists.
+  if (existsSync(join(SRC, "pages/blog/index.html"))) buildBlogIndex(posts);
   copyAssets();
   writeSitemap(posts);
   writeRobots();
