@@ -263,16 +263,17 @@
     align-items: center;
     gap: 0.55rem;
   }
-  /* Header logo: the JB monogram, masked so it inherits the brand link's
-     color (foreground, → accent on hover) and flips with the theme. */
+  /* Header logo: the AW signature mark, masked so it inherits the brand
+     link's color (foreground, → accent on hover) and flips with the theme.
+     Width tracks the mark's 1404:1111 aspect ratio. */
   .brand-mark {
     display: inline-block;
-    width: 1.7rem;
+    width: 2.15rem;
     height: 1.7rem;
     flex: none;
     background-color: currentColor;
-    -webkit-mask: url("/images/jb-mark.png") center / contain no-repeat;
-    mask: url("/images/jb-mark.png") center / contain no-repeat;
+    -webkit-mask: url("/images/aw-mark.svg") center / contain no-repeat;
+    mask: url("/images/aw-mark.svg") center / contain no-repeat;
   }
 }
 

@@ -1,8 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
-  <rect width="128" height="128" rx="28" fill="#171717"/>
-  <g transform="translate(12.00,22.86) scale(0.07405)">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1404.5 1111.3" role="img" aria-label="AW">
 <g transform="translate(-184.490880,1126.978338) scale(0.100000,-0.100000)"
-fill="#fafafa" stroke="#fafafa" stroke-width="440" stroke-linejoin="round" stroke-linecap="round">
+fill="currentColor" stroke="currentColor" stroke-width="160" stroke-linejoin="round" stroke-linecap="round">
 <path d="M9165 11254 c-62 -32 -152 -139 -204 -243 -33 -66 -113 -206 -141
 -246 -15 -22 -48 -78 -74 -125 -26 -47 -69 -121 -96 -165 -28 -44 -50 -84 -50
 -88 0 -5 -11 -23 -24 -40 -13 -18 -30 -45 -38 -62 -25 -48 -71 -132 -141 -255
@@ -146,6 +144,5 @@ fill="#fafafa" stroke="#fafafa" stroke-width="440" stroke-linejoin="round" strok
 180 11 22 26 47 33 55 6 8 37 65 68 125 56 108 68 130 138 250 19 33 54 94 78
 135 52 92 170 288 261 435 38 61 94 155 124 210 78 139 183 313 290 478 27 42
 73 123 97 170 21 42 44 48 57 15z"/>
-</g>
 </g>
 </svg>

@@ -69,7 +69,7 @@ Ocean Breeze (palette from [tweakcn](https://tweakcn.com/r/themes/ocean-breeze.j
 
 Fonts: DM Sans for display, headings, and body; IBM Plex Mono for nav, labels, meta, and code; Lora available as the serif (`--font-serif`). Visual changes should stay consistent with the tokens in `src/styles.css`.
 
-The favicon mark (navy tile + emerald blob) lives in `public/favicon.svg`. The bitmap icons (`favicon.ico`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`) are regenerated from that mark by `node scripts/gen-icons.mjs` — re-run it after any palette change so the bitmaps stay in sync.
+The brand mark is the AW signature: `public/images/aw-mark.svg` (currentColor, used by the header via CSS mask) and `public/favicon.svg` (ink tile + white signature). The bitmap icons (`favicon.ico`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`) are regenerated from favicon.svg by `node scripts/gen-icons.mjs` (needs `brew install librsvg`) — re-run it after any change to the mark.
 
 The hero portrait is `public/images/portrait-bw.jpg` — a 1152×1536 (3:4) black-and-white crop of the source photo, converted with `sips` (center crop to 3:4, resize, match to the Generic Gray ICC profile). It doubles as the OG/social-card image. To swap it, keep the ratio and rerun that treatment.
 
