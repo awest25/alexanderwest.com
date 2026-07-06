@@ -252,6 +252,11 @@ function defaultJsonLd() {
       "@type": "CollegeOrUniversity",
       name: "University of California, Los Angeles",
     },
+    worksFor: {
+      "@type": "Organization",
+      name: "Mechanize",
+      url: "https://mechanize.work",
+    },
     sameAs: ["https://github.com/awest25", "https://linkedin.com/in/awest25"],
   };
 }
