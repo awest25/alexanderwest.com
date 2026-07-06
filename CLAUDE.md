@@ -71,7 +71,7 @@ Fonts: DM Sans for display, headings, and body; IBM Plex Mono for nav, labels, m
 
 The favicon mark (navy tile + emerald blob) lives in `public/favicon.svg`. The bitmap icons (`favicon.ico`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`) are regenerated from that mark by `node scripts/gen-icons.mjs` — re-run it after any palette change so the bitmaps stay in sync.
 
-The hero portrait is currently `public/images/portrait.svg`, a placeholder. When a real photo lands: keep the 3:4 ratio, put it in `public/images/`, and update the `<img>` in `src/pages/index.html` (and the OG image frontmatter if it should double as the social card).
+The hero portrait is `public/images/portrait-bw.jpg` — a 1152×1536 (3:4) black-and-white crop of the source photo, converted with `sips` (center crop to 3:4, resize, match to the Generic Gray ICC profile). It doubles as the OG/social-card image. To swap it, keep the ratio and rerun that treatment.
 
 ## Hosting
 

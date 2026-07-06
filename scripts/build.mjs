@@ -230,7 +230,7 @@ function renderPage({ frontmatter, body, slug }) {
     canonical: frontmatter.canonical || `${SITE_URL}${slug}`,
     ogTitle: escapeHTML(frontmatter.ogTitle || frontmatter.title || "Alexander West"),
     ogType: frontmatter.ogType || "website",
-    ogImage: frontmatter.ogImage ? `${SITE_URL}${frontmatter.ogImage}` : `${SITE_URL}/icon-512.png`,
+    ogImage: frontmatter.ogImage ? `${SITE_URL}${frontmatter.ogImage}` : `${SITE_URL}/images/portrait-bw.jpg`,
     htmlClass: frontmatter.htmlClass || "",
     bodyClass: frontmatter.bodyClass || "min-h-screen",
     header,
@@ -346,7 +346,7 @@ function buildPosts() {
 
     const slug = `/blog/posts/${id}`;
     const canonical = `${SITE_URL}${slug}`;
-    const ogImage = data.image ? `${SITE_URL}${data.image}` : `${SITE_URL}/icon-512.png`;
+    const ogImage = data.image ? `${SITE_URL}${data.image}` : `${SITE_URL}/images/portrait-bw.jpg`;
     const jsonLd = {
       "@context": "https://schema.org",
       "@type": "Article",
