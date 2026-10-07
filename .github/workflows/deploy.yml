@@ -1,0 +1,52 @@
+# Builds the site on every push and pull request (CI), and deploys dist/ to
+# GitHub Pages from main. The custom domain is set in the repo's Pages settings.
+# DECISION: chose GitHub Pages over Cloudflare Pages because it needs no new account or nameserver move, and the repo already lives on GitHub.
+name: Build and deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  # Cancel superseded PR builds, but never interrupt a deploy from main.
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Check the build output
+        run: |
+          for f in index.html styles.css sitemap.xml robots.txt Resume.pdf favicon.svg; do
+            test -s "dist/$f" || { echo "missing or empty: dist/$f"; exit 1; }
+          done
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
