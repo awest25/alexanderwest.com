@@ -16,7 +16,7 @@ Runs the HTML generator (`scripts/build.mjs`) then the Tailwind CLI. Catches:
 - Unreplaced `{{ placeholders }}` from a partial template (build prints `warn: unreplaced placeholders: [...]`)
 - Tailwind class lookup failures (v4 errors loudly on `@apply` of an unknown utility)
 
-CI runs the same command and asserts the expected files exist in `dist/`.
+CI (`.github/workflows/deploy.yml`) runs the same command and asserts the expected files exist in `dist/`.
 
 ### Always use feature branches
 
@@ -59,7 +59,7 @@ The blog is NOT this repo: it lives at `blog.alexanderwest.com` (the [blog](http
 
 1. `src/pages/<route>.html` with YAML frontmatter at the top (`title`, `description`, `ogImage`, `canonical`, `header: home` or `blog`).
 2. Body is plain HTML with Tailwind utility classes.
-3. `npm run build`. The page lands at `/<route>` (the nginx `try_files $uri $uri.html` rule resolves the `.html` extension for pretty URLs).
+3. `npm run build`. The page lands at `/<route>` (GitHub Pages serves `<route>.html` for the extensionless URL, so pretty URLs need no config).
 
 ## Design system
 
@@ -73,9 +73,9 @@ The hero portrait is `public/images/portrait-bw.jpg` — a 1152×1536 (3:4) blac
 
 ## Hosting
 
-Self-hosted in the **farallon homelab**, mirroring the blog's deploy shape: a Docker image (Node build stage → nginx serving `dist/` on :3002) running as a compose unit on the acquisition VM, proxied at `alexanderwest.com` by Nginx Proxy Manager with a Let's Encrypt cert. Infra wiring lives in the [farallon-infra](https://github.com/awest25/farallon-infra) repo.
+GitHub Pages. `.github/workflows/deploy.yml` builds on every push and PR, and deploys `dist/` from `main`; the custom domain (`alexanderwest.com`) and HTTPS are set in the repo's Pages settings, with the apex `A` records at GoDaddy pointing at GitHub Pages. Nothing about the site depends on the home server.
 
-Deploy is: build on the VM from this directory, `docker compose up -d --build`. If the site later moves to Cloudflare Pages, delete the Dockerfile/compose and the nginx notes here.
+Deploy is: merge to `main`.
 
 ## Provenance
 
@@ -83,8 +83,7 @@ Design and build system adapted from [JayceBordelon/jaycebordelon.com](https://g
 
 ## Related repos
 
-- [farallon-infra](https://github.com/awest25/farallon-infra) — homelab Terraform.
-- [blog](https://github.com/awest25/blog) — earlier Astro blog at `blog.alexanderwest.com` (Keystatic-edited, separate container).
+- [blog](https://github.com/awest25/blog) — THE blog at `blog.alexanderwest.com` (Astro + Keystatic, hosted separately).
 - [resume](https://github.com/awest25/resume) — LaTeX source of `public/Resume.pdf`; its CI builds the PDF artifact.
 
 ## No auth here
