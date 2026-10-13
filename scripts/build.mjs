@@ -254,8 +254,8 @@ function defaultJsonLd() {
     },
     worksFor: {
       "@type": "Organization",
-      name: "Mechanize",
-      url: "https://mechanize.work",
+      name: "Google DeepMind",
+      url: "https://deepmind.google",
     },
     sameAs: ["https://github.com/awest25", "https://linkedin.com/in/awest25"],
   };
