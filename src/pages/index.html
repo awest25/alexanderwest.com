@@ -6,16 +6,17 @@ ogType: website
 ogImage: /images/portrait-bw.jpg
 canonical: https://alexanderwest.com/
 header: home
-htmlClass: ""
+htmlClass: "overscroll-y-none"
 bodyClass: "h-dvh overflow-hidden"
 pageScripts: |
   <script src="/scripts/scramble.js" defer></script>
   <script src="/scripts/typing.js" defer></script>
+  <script src="/scripts/elastic.js" defer></script>
 ---
 <section class="enter-stage relative flex h-dvh flex-col overflow-hidden">
   <div class="relative z-10 flex flex-1 items-center">
     <div class="mx-auto flex w-full max-w-5xl flex-col-reverse items-start gap-8 px-7 pt-16 sm:px-8 md:flex-row md:items-center md:justify-between md:gap-16 lg:px-12">
-      <div class="max-w-xl">
+      <div class="max-w-xl" data-elastic="1">
       <p class="enter-rise flex items-center gap-2.5 font-mono text-[11px] font-semibold uppercase tracking-[0.28em] text-muted-foreground" style="--enter-delay: 40ms;">
         software engineer
       </p>
@@ -74,7 +75,7 @@ pageScripts: |
       </div>
 
       <figure class="enter-rise shrink-0" style="--enter-delay: 1080ms;">
-        <div class="overflow-hidden rounded-[1.75rem] border border-border">
+        <div class="overflow-hidden rounded-[1.75rem] border border-border" data-elastic="0.6">
           <img
             src="/images/portrait-bw.jpg"
             alt="Alexander in a white button-down, hands in pockets, smiling under brick archways"
